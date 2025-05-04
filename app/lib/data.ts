@@ -10,7 +10,7 @@ import {
 import { formatCurrency } from "./utils";
 
 function delay(ms: number = 3000) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms / 4));
 }
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
@@ -98,6 +98,7 @@ export async function fetchFilteredInvoices(
   query: string,
   currentPage: number
 ) {
+  console.log("kkk111 fetchFilteredInvoices", query, currentPage);
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
